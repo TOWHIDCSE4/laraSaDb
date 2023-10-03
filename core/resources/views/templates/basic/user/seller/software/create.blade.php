@@ -83,15 +83,15 @@
                                                 </select>
                                         </div>
 
-                                        <div class="col-xl-6 col-lg-6 form-group conditional-div" id="feature_div">
-                                            <label>@lang('Include Feature')*</label>
-                                            @foreach($features as $feature)
-                                                <div class="form-group custom-check-group">
-                                                    <input type="checkbox" name="features[]" id="{{$feature->id}}" value="{{$feature->id}}">
-                                                    <label for="{{$feature->id}}">{{__($feature->name)}}</label>
-                                                </div>
-                                            @endforeach
-                                        </div>
+{{--                                        <div class="col-xl-6 col-lg-6 form-group conditional-div" id="feature_div">--}}
+{{--                                            <label>@lang('Include Feature')*</label>--}}
+{{--                                            @foreach($features as $feature)--}}
+{{--                                                <div class="form-group custom-check-group">--}}
+{{--                                                    <input type="checkbox" name="features[]" id="{{$feature->id}}" value="{{$feature->id}}">--}}
+{{--                                                    <label for="{{$feature->id}}">{{__($feature->name)}}</label>--}}
+{{--                                                </div>--}}
+{{--                                            @endforeach--}}
+{{--                                        </div>--}}
 
                                         <div class="col-xl-6 col-lg-6 form-group conditional-div" id="product_code_div">
                                             <label>@lang('Product Code')*</label>
@@ -116,12 +116,12 @@
                                             <small>@lang('Tag and enter press')</small>
                                         </div>
 
-                                        <div class="col-xl-6 col-lg-6 form-group conditional-div select2Tag" id="file_div">
-                                            <label>@lang('File Include')*</label>
-                                            <select class="form-control select2" name="file_include[]" multiple="multiple" >
-                                            </select>
-                                            <small>@lang('File and enter press')</small>
-                                        </div>
+{{--                                        <div class="col-xl-6 col-lg-6 form-group conditional-div select2Tag" id="file_div">--}}
+{{--                                            <label>@lang('File Include')*</label>--}}
+{{--                                            <select class="form-control select2" name="file_include[]" multiple="multiple" >--}}
+{{--                                            </select>--}}
+{{--                                            <small>@lang('File and enter press')</small>--}}
+{{--                                        </div>--}}
 
                                         <div class="col-xl-6 col-lg-6 form-group conditional-div" id="demo_div">
                                             <label>@lang('Demo Url')*</label>
@@ -242,24 +242,25 @@
     });
 
     
-    // $(document).ready(function() {
-    //     $('.select2').select2({
-    //         tags: true
-    //     });
-    //     var html = `
-    //             <div class="custom-file-wrapper removeVerities">
-    //                 <div class="col-xl-7 col-lg-7">
-    //                     <input type="text" name="product_name[]" id="prdname" maxlength="255" value="" class="form-control" placeholder="@lang("Product Name")" >
-    //                 </div>
-    //                 <div class="col-xl-3 col-lg-3">
-    //                     <input type="text" name="inventory[]"  id="prdqty" maxlength="255" value="" class="form-control" placeholder="@lang("Inventory")">
-    //                 </div>
-    //                 <div class="col-xl-2 col-lg-2">
-    //                     <button class="btn btn--danger text-white border--rounded removeExtraVerities"><i class="fa fa-times"></i></button>
-    //                 </div>
-    //             </div>`;
-    //     $('.addVerities').append(html);
-    // });
+    $(document).ready(function() {
+        $('.select2').select2({
+            tags: true,
+            width: "100%",
+        });
+    {{--    var html = `--}}
+    {{--            <div class="custom-file-wrapper removeVerities">--}}
+    {{--                <div class="col-xl-7 col-lg-7">--}}
+    {{--//                     <input type="text" name="product_name[]" id="prdname" maxlength="255" value="" class="form-control" placeholder="@lang("Product Name")" >--}}
+    {{--                </div>--}}
+    {{--                <div class="col-xl-3 col-lg-3">--}}
+    {{--//                     <input type="text" name="inventory[]"  id="prdqty" maxlength="255" value="" class="form-control" placeholder="@lang("Inventory")">--}}
+    {{--                </div>--}}
+    {{--                <div class="col-xl-2 col-lg-2">--}}
+    {{--                    <button class="btn btn--danger text-white border--rounded removeExtraVerities"><i class="fa fa-times"></i></button>--}}
+    {{--                </div>--}}
+    {{--            </div>`;--}}
+    {{--    $('.addVerities').append(html);--}}
+    });
 
     $(".remove-image").on('click', function () {
         $(".profilePicPreview").css('background-image', 'none');
@@ -383,6 +384,7 @@
         }else if(product_type==2){
             $(".conditional-div").css("display", "block");
             $("#product_code_div").css("display", "none");
+            $("#product_code_div input").attr("required", false);
             $("#screenshot_title").text("Screenshot");
             $("#feature_div").css("display", "block");
             $("#tag_div").css("display", "block");

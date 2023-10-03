@@ -61,9 +61,9 @@ class SoftwareController extends Controller
                 'title' => 'required|string|max:255',
                 'category' => 'required|exists:categories,id',
                 'subcategory' => 'nullable|exists:sub_categories,id',
-                'features' => 'required|array|exists:features,id',
+//                'features' => 'required|array|exists:features,id',
                 'tag' => 'required|array|min:3|max:15',
-                'file_include' => 'required|array|min:3|max:15',
+//                'file_include' => 'required|array|min:3|max:15',
                 'amount' => 'required|numeric|gt:0',
                 'url' => 'required|url',
                 'description' => 'required',
@@ -83,7 +83,7 @@ class SoftwareController extends Controller
         $software->amount = $request->amount;
         $software->demo_url = $request->url;
         $software->tag = $request->tag;
-        $software->file_include = $request->file_include;
+//        $software->file_include = $request->file_include;
         $software->description = $request->description;
         $software->product_type = $request->product_type;
 
@@ -134,7 +134,7 @@ class SoftwareController extends Controller
         }
         $software->updated_at = Carbon::now();
         $software->save();
-        $software->featuresSoftware()->attach($request->features);
+//        $software->featuresSoftware()->attach($request->features);
         if($request->screenshot){
         	$screenshot = array_filter($request->screenshot);
         	$this->screenshotImageStore($request, $screenshot, $software->id);
@@ -226,9 +226,9 @@ class SoftwareController extends Controller
                 'title' => 'required|string|max:255',
                 'category' => 'required|exists:categories,id',
                 'subcategory' => 'nullable|exists:sub_categories,id',
-                'features' => 'required|array|exists:features,id',
+//                'features' => 'required|array|exists:features,id',
                 'tag' => 'required|array|min:3|max:15',
-                'file_include' => 'required|array|min:3|max:15',
+//                'file_include' => 'required|array|min:3|max:15',
                 'amount' => 'required|numeric|gt:0',
                 'url' => 'required|url',
                 'description' => 'required',
@@ -248,7 +248,7 @@ class SoftwareController extends Controller
         $software->demo_url = $request->url;
         $software->description = $request->description;
         $software->tag = $request->tag;
-        $software->file_include = $request->file_include;
+//        $software->file_include = $request->file_include;
         $path = imagePath()['software']['path'];
         // $size = imagePath()['software']['size']; 
         $max_size = imagePath()['product']['max_size'];
@@ -298,7 +298,7 @@ class SoftwareController extends Controller
         }
         $software->updated_at = Carbon::now();
         $software->save();
-        $software->featuresSoftware()->sync($request->features);
+//        $software->featuresSoftware()->sync($request->features);
         if($request->screenshot){
             $screenshot = array_filter($request->screenshot);
             $this->screenshotImageStore($request, $screenshot, $software->id);

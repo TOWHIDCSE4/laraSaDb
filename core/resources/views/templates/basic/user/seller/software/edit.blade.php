@@ -94,19 +94,19 @@
                                                 </select>
                                         </div>
 
-                                        <div class="col-xl-6 col-lg-6 form-group conditional-div" id="feature_div">
-                                            <label>@lang('Include Feature')*</label>
-                                               @foreach($features as $feature)
-                                                    <div class="form-group conditional-div custom-check-group">
-                                                        <input type="checkbox" name="features[]"
-                                                        @foreach($software->featuresSoftware as $value)
-                                                            {{$feature->id == $value->id ? 'checked' : '' }}  
-                                                        @endforeach  
-                                                         id="{{$feature->id}}" value="{{$feature->id}}">
-                                                        <label for="{{$feature->id}}">{{__($feature->name)}}</label>
-                                                    </div>
-                                                @endforeach
-                                        </div>
+{{--                                        <div class="col-xl-6 col-lg-6 form-group conditional-div" id="feature_div">--}}
+{{--                                            <label>@lang('Include Feature')*</label>--}}
+{{--                                               @foreach($features as $feature)--}}
+{{--                                                    <div class="form-group conditional-div custom-check-group">--}}
+{{--                                                        <input type="checkbox" name="features[]"--}}
+{{--                                                        @foreach($software->featuresSoftware as $value)--}}
+{{--                                                            {{$feature->id == $value->id ? 'checked' : '' }}  --}}
+{{--                                                        @endforeach  --}}
+{{--                                                         id="{{$feature->id}}" value="{{$feature->id}}">--}}
+{{--                                                        <label for="{{$feature->id}}">{{__($feature->name)}}</label>--}}
+{{--                                                    </div>--}}
+{{--                                                @endforeach--}}
+{{--                                        </div>--}}
                                         <div class="col-xl-6 col-lg-6 form-group conditional-div" id="product_code_div">
                                             <label>@lang('Product Code')*</label>
                                             <div class="input-group mb-3">
@@ -133,17 +133,17 @@
                                             <small>@lang('Tag and enter press')</small>
                                         </div>
 
-                                        <div class="col-xl-6 col-lg-6 form-group conditional-div select2Tag" id="file_div">
-                                            <label>@lang('File Include')*</label>
-                                            <select class="form-control select2" name="file_include[]" multiple="multiple" >
-                                                @if(!empty($software->file_include))
-                                                @foreach($software->file_include as $name)
-                                                    <option value="{{$name}}" selected="true">{{__($name)}}</option>
-                                                @endforeach
-                                                @endif
-                                            </select>
-                                            <small>@lang('File and enter press')</small>
-                                        </div>
+{{--                                        <div class="col-xl-6 col-lg-6 form-group conditional-div select2Tag" id="file_div">--}}
+{{--                                            <label>@lang('File Include')*</label>--}}
+{{--                                            <select class="form-control select2" name="file_include[]" multiple="multiple" >--}}
+{{--                                                @if(!empty($software->file_include))--}}
+{{--                                                @foreach($software->file_include as $name)--}}
+{{--                                                    <option value="{{$name}}" selected="true">{{__($name)}}</option>--}}
+{{--                                                @endforeach--}}
+{{--                                                @endif--}}
+{{--                                            </select>--}}
+{{--                                            <small>@lang('File and enter press')</small>--}}
+{{--                                        </div>--}}
 
 
                                         <div class="col-xl-6 col-lg-6 form-group conditional-div" id="demo_div">
