@@ -448,8 +448,8 @@
             $("#verities_div").css("display","block");
             $("#coming_soon").css("display", "none");
         }else if(product_type==2){
-            $("#product_code_div").css("display", "none");
             $(".conditional-div").css("display", "block");
+            $("#product_code_div").css("display", "none");
             $("#screenshot_title").text("Pictures and Media");
             $("#feature_div").css("display", "block");
             $("#tag_div").css("display", "block");
@@ -459,6 +459,8 @@
             $("#zip_div").css("display", "block");
             $("#verities_div").css("display","none");
             $("#coming_soon").css("display", "none");
+
+            $('#category').attr("disabled", true)
         }else if(product_type==3){
             $("#product_code_div").css("display", "none");
             $(".conditional-div").css("display", "none");

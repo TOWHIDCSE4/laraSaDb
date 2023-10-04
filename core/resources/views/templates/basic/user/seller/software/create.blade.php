@@ -326,31 +326,32 @@
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 
-
-    $('#category').on('change', function(){
-        var category = $(this).val();
-        console.log(category);
-            $.ajax({
-                type:"GET",
-                url:"{{route('user.category')}}",
-                data: {category : category},
-                success:function(data){
-                    var html = '';
-                    if(data.error){
-                        $("#subCategorys").empty(); 
-                        html += `<option value="" selected disabled>${data.error}</option>`;
+    function resetSubCategory(categoryID){
+        $.ajax({
+            type: "GET",
+            url: "{{route('user.category')}}",
+            data: {category: categoryID},
+            success: function (data) {
+                var html = '';
+                if (data.error) {
+                    $("#subCategorys").empty();
+                    html += `<option value="" selected disabled>${data.error}</option>`;
+                    $(".mySubCatgry").html(html);
+                } else {
+                    $("#subCategorys").empty();
+                    html += `<option value="" selected disabled>@lang('Select Sub Category')</option>`;
+                    $.each(data, function (index, item) {
+                        html += `<option value="${item.id}">${item.name}</option>`;
                         $(".mySubCatgry").html(html);
-                    }
-                    else{
-                        $("#subCategorys").empty(); 
-                        html += `<option value="" selected disabled>@lang('Select Sub Category')</option>`;
-                        $.each(data, function(index, item) {
-                            html += `<option value="${item.id}">${item.name}</option>`;
-                            $(".mySubCatgry").html(html);
-                        });
-                    }
+                    });
                 }
-        });   
+            }
+        });
+    }
+
+    $('#category').on('change', function () {
+        var category = $(this).val();
+        resetSubCategory(category)
     });
     $(".conditional-div").css("display", "block");
     $("#product_code_div").css("display", "block");
@@ -396,6 +397,21 @@
             $("#coming_soon").css("display", "none");
             $("#prdname").prop('required',false);
             $("#prdqty").prop('required',false);
+
+            // if product is digital then only category available is digital
+            // but can choose different subcategory
+            $('#category option').each(function (){
+                if (this.value == "2") {
+                    $(this).attr("selected", true)
+                } else {
+                    $(this).attr("selected", false)
+                }
+            })
+            $('#category').attr("disabled", true)
+            resetSubCategory("2")
+
+
+
         }else if(product_type==3){
             $("#product_code_div").css("display", "none");
             $(".conditional-div").css("display", "none");

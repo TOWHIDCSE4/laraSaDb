@@ -985,6 +985,12 @@ dd(decide_resize($size,$max))
                 
 
             });
+            // if product is digital then we don't want to show analytics tab
+            var product_type = "<?php echo $software->product_type;?>";
+            if (product_type == 2) {
+                $("#analytics-tab").css("display", "none")
+                $("#analytics").css("display", "none")
+            }
         });
     </script>
 @endpush
